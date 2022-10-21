@@ -39,22 +39,49 @@ const images = [
     }
 ];
 
-/*Ora rimuoviamo i contenuti statici e usiamo l’array di oggetti letterali
-per popolare dinamicamente il carosello.
-
-Al click dell'utente sulle frecce verso sinistra o destra,
-l'immagine attiva diventerà visibile e dovremo aggiungervi titolo e testo.*/
-
 //seleziono elemento dom
 const slidesEl = document.querySelector('.slides');
+//seleziono i bottoni
+const backEl = document.querySelector('.back');
+const nextEl = document.querySelector('.next');
+
+let thisImg = 0;
 
 //inserisco immagine
-images.forEach(insImg)
-
-//funzione per inserire immagine
-function insImg(img, i) {
-    console.log(img.image, i);
+images.forEach((img, i) => {
+        //console.log(img.image, i);
     //inserisco immagine
-    slidesEl.insertAdjacentHTML('beforeend', `<img class="${i == 0 ? 'active' : ''}" src="./assets/${img.image}" alt="">`)
+    slidesEl.insertAdjacentHTML('beforeend', `<img class="${i == thisImg ? 'image active' : 'image'}" src="./assets/${img.image}" alt="">`)
 
-}
+})
+
+//aggiungo event-listner
+nextEl.addEventListener('click', function () {
+    //incremento indice dell'immagine attuale
+    thisImg++
+    //seleziono l'immagine attiva
+    let activeImg = document.querySelector('.active')
+    //console.log(activeImg);
+    //rimuovo la class
+    activeImg.classList.remove('active');
+    //aggiungo la classe active alla prossima immagine
+    const nextImg = document.querySelectorAll('.image');
+    nextImg[thisImg].classList.add('active');
+    
+})
+
+backEl.addEventListener('click', function () {
+    //incremento indice dell'immagine attuale
+    thisImg--
+    //seleziono l'immagine attiva
+    let activeImg = document.querySelector('.active')
+    //console.log(activeImg);
+    //rimuovo la class
+    activeImg.classList.remove('active');
+    //aggiungo la classe active alla prossima immagine
+    const nextImg = document.querySelectorAll('.image');
+    nextImg[thisImg].classList.add('active');
+    
+})
+
+
