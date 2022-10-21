@@ -48,9 +48,13 @@ l'immagine attiva diventerà visibile e dovremo aggiungervi titolo e testo.*/
 //seleziono elemento dom
 const slidesEl = document.querySelector('.slides');
 
-//ciclo all'interno dell'array
-images.forEach((img, i) => {
+//inserisco immagine
+images.forEach(insImg)
+
+//funzione per inserire immagine
+function insImg(img, i) {
     console.log(img.image, i);
     //inserisco immagine
     slidesEl.insertAdjacentHTML('beforeend', `<img class="${i == 0 ? 'active' : ''}" src="./assets/${img.image}" alt="">`)
-});
+
+}
