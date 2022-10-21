@@ -61,7 +61,7 @@ const btn4El = document.querySelector('.btn_4');
 let thisImg = 0;
 
 //funzionalità di autoplay
-setInterval(() => {
+const idInterval = setInterval(() => {
     if (thisImg == 4) {
         thisImg = 0
     } else {
@@ -77,7 +77,7 @@ setInterval(() => {
 }, 3000);
 
 
-//inserisco immagine
+//inserisco oggetti in dom
 images.forEach((img, i) => {
     //inserisco immagine
     //slidesEl.insertAdjacentHTML('beforeend', `<img class="${i == thisImg ? 'image active' : 'image'}" src="./assets/${img.image}" alt="">`)
@@ -89,6 +89,23 @@ images.forEach((img, i) => {
         </div>`)
    
 })
+
+//inserisco bottoni start/stop
+const buttonBottomEl = document.createElement('div')
+buttonBottomEl.className = 'buttons_bottom'
+const stopEl = document.createElement('button');
+buttonBottomEl.append(stopEl)
+stopEl.innerHTML = 'Stop';
+slidesEl.append(buttonBottomEl)
+const startEl = document.createElement('button');
+buttonBottomEl.append(startEl)
+startEl.innerHTML = 'Start';
+slidesEl.append(buttonBottomEl)
+
+stopEl.addEventListener('click', () => clearInterval(idInterval));
+startEl.addEventListener('click', () => idInterval)
+
+
 
 
 
