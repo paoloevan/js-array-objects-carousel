@@ -87,7 +87,7 @@ images.forEach((img, i) => {
         <h2>${img.title}</h2>
         <p>${img.text}</p>
         </div>`)
-   
+
 })
 
 //inserisco bottoni start/stop
@@ -103,7 +103,22 @@ startEl.innerHTML = 'Start';
 slidesEl.append(buttonBottomEl)
 
 stopEl.addEventListener('click', () => clearInterval(idInterval));
-startEl.addEventListener('click', () => idInterval)
+startEl.addEventListener('click', () => {
+    setInterval(() => {
+        if (thisImg == 4) {
+            thisImg = 0
+        } else {
+            thisImg++
+        }
+        //seleziono l'immagine attiva
+        let activeImg = document.querySelector('.active')
+        //rimuovo la class
+        activeImg.classList.remove('active');
+        //aggiungo la classe active alla prossima immagine
+        const nextImg = document.querySelectorAll('.slide');
+        nextImg[thisImg].classList.add('active');
+    }, 3000);
+})
 
 
 
@@ -119,15 +134,15 @@ btn(btn4El, thisImg, nextImg)
 //funzione per cambiare immagine
 function btn(element, index, nextEl) {
     element.addEventListener('click', function () {
-    index = 0;
-    //seleziono l'immagine attiva
-    let activeImg = document.querySelector('.active')
-    //rimuovo la class
-    activeImg.classList.remove('active');
-    //aggiungo la classe active alla prossima immagine
-    nextEl[index].classList.add('active');
+        index = 0;
+        //seleziono l'immagine attiva
+        let activeImg = document.querySelector('.active')
+        //rimuovo la class
+        activeImg.classList.remove('active');
+        //aggiungo la classe active alla prossima immagine
+        nextEl[index].classList.add('active');
 
-})
+    })
 }
 
 
