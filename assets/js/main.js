@@ -35,21 +35,22 @@ const images = [
 const slidesEl = document.querySelector('.slides');
 //seleziono i bottoni
 const buttonsEl = document.querySelector('.buttons');
+
+//inserisco i bottoni con le immagini
+for (let i = 0; i < 5; i++) {
+    buttonsEl.insertAdjacentHTML('beforeend', `
+    <button class="btn_${i}">
+    <img height="30" src="./assets/${images[i].image}" alt="">
+    </button>
+    `
+    )
+}
+//seleziono i bottoni
 const btn0El = document.querySelector('.btn_0');
 const btn1El = document.querySelector('.btn_1');
 const btn2El = document.querySelector('.btn_2');
 const btn3El = document.querySelector('.btn_3');
 const btn4El = document.querySelector('.btn_4');
-
-for (let i = 0; i < 5; i++) {
-    buttonsEl.insertAdjacentHTML('beforeend', `
-                <button class="btn_${i}">
-                    <img height="30" src="./assets/${images[i].image}" alt="">
-                </button>
-            `
-    )
-}
-
 
 
 //inserisco immagini nei bottoni
@@ -71,14 +72,21 @@ images.forEach((img, i) => {
 
 })
 
+
+
 //aggiungo event-listner
+btn0El.addEventListener('click', function () {
+    thisImg = 0;
+    //seleziono l'immagine attiva
+    let activeImg = document.querySelector('.active')
+    //rimuovo la class
+    activeImg.classList.remove('active');
+    //aggiungo la classe active alla prossima immagine
+    const nextImg = document.querySelectorAll('.slide');
+    nextImg[thisImg].classList.add('active');
+
+})
 btn1El.addEventListener('click', function () {
-    //incremento indice dell'immagine attuale
-    // if (thisImg == 4) {
-    //     thisImg = 0
-    // } else {
-    //     thisImg++
-    // }
     thisImg = 1;
     //seleziono l'immagine attiva
     let activeImg = document.querySelector('.active')
@@ -89,14 +97,8 @@ btn1El.addEventListener('click', function () {
     nextImg[thisImg].classList.add('active');
 
 })
-
-backEl.addEventListener('click', function () {
-    //incremento indice dell'immagine attuale
-    if (thisImg == 0) {
-        thisImg = 4
-    } else {
-        thisImg--
-    }
+btn2El.addEventListener('click', function () {
+    thisImg = 2;
     //seleziono l'immagine attiva
     let activeImg = document.querySelector('.active')
     //rimuovo la class
@@ -106,5 +108,29 @@ backEl.addEventListener('click', function () {
     nextImg[thisImg].classList.add('active');
 
 })
+btn3El.addEventListener('click', function () {
+    thisImg = 3;
+    //seleziono l'immagine attiva
+    let activeImg = document.querySelector('.active')
+    //rimuovo la class
+    activeImg.classList.remove('active');
+    //aggiungo la classe active alla prossima immagine
+    const nextImg = document.querySelectorAll('.slide');
+    nextImg[thisImg].classList.add('active');
+
+})
+btn4El.addEventListener('click', function () {
+    thisImg = 4;
+    //seleziono l'immagine attiva
+    let activeImg = document.querySelector('.active')
+    //rimuovo la class
+    activeImg.classList.remove('active');
+    //aggiungo la classe active alla prossima immagine
+    const nextImg = document.querySelectorAll('.slide');
+    nextImg[thisImg].classList.add('active');
+
+})
+
+
 
 
