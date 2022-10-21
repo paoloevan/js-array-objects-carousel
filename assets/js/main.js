@@ -32,8 +32,9 @@ const images = [
     }
 ];
 
-//seleziono elemento dom
+//seleziono elementi dom
 const slidesEl = document.querySelector('.slides');
+const nextImg = document.querySelectorAll('.slide');
 //seleziono i bottoni
 const buttonsEl = document.querySelector('.buttons');
 
@@ -92,62 +93,25 @@ images.forEach((img, i) => {
 
 
 //aggiungo event-listner
-btn0El.addEventListener('click', function () {
-    thisImg = 0;
+btn(btn0El, thisImg, nextImg)
+btn(btn1El, thisImg, nextImg)
+btn(btn2El, thisImg, nextImg)
+btn(btn3El, thisImg, nextImg)
+btn(btn4El, thisImg, nextImg)
+
+//funzione per cambiare immagine
+function btn(element, index, nextEl) {
+    element.addEventListener('click', function () {
+    index = 0;
     //seleziono l'immagine attiva
     let activeImg = document.querySelector('.active')
     //rimuovo la class
     activeImg.classList.remove('active');
     //aggiungo la classe active alla prossima immagine
-    const nextImg = document.querySelectorAll('.slide');
-    nextImg[thisImg].classList.add('active');
+    nextEl[index].classList.add('active');
 
 })
-btn1El.addEventListener('click', function () {
-    thisImg = 1;
-    //seleziono l'immagine attiva
-    let activeImg = document.querySelector('.active')
-    //rimuovo la class
-    activeImg.classList.remove('active');
-    //aggiungo la classe active alla prossima immagine
-    const nextImg = document.querySelectorAll('.slide');
-    nextImg[thisImg].classList.add('active');
-
-})
-btn2El.addEventListener('click', function () {
-    thisImg = 2;
-    //seleziono l'immagine attiva
-    let activeImg = document.querySelector('.active')
-    //rimuovo la class
-    activeImg.classList.remove('active');
-    //aggiungo la classe active alla prossima immagine
-    const nextImg = document.querySelectorAll('.slide');
-    nextImg[thisImg].classList.add('active');
-
-})
-btn3El.addEventListener('click', function () {
-    thisImg = 3;
-    //seleziono l'immagine attiva
-    let activeImg = document.querySelector('.active')
-    //rimuovo la class
-    activeImg.classList.remove('active');
-    //aggiungo la classe active alla prossima immagine
-    const nextImg = document.querySelectorAll('.slide');
-    nextImg[thisImg].classList.add('active');
-
-})
-btn4El.addEventListener('click', function () {
-    thisImg = 4;
-    //seleziono l'immagine attiva
-    let activeImg = document.querySelector('.active')
-    //rimuovo la class
-    activeImg.classList.remove('active');
-    //aggiungo la classe active alla prossima immagine
-    const nextImg = document.querySelectorAll('.slide');
-    nextImg[thisImg].classList.add('active');
-
-})
-
+}
 
 
 
