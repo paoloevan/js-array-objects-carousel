@@ -61,8 +61,19 @@ let thisImg = 0;
 
 //funzionalità di autoplay
 setInterval(() => {
-    thisImg++
-}, 1000);
+    if (thisImg == 4) {
+        thisImg = 0
+    } else {
+        thisImg++
+    }
+    //seleziono l'immagine attiva
+    let activeImg = document.querySelector('.active')
+    //rimuovo la class
+    activeImg.classList.remove('active');
+    //aggiungo la classe active alla prossima immagine
+    const nextImg = document.querySelectorAll('.slide');
+    nextImg[thisImg].classList.add('active');
+}, 3000);
 
 
 //inserisco immagine
