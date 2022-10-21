@@ -8,10 +8,6 @@ img {
     width: 100%;
     height: 400px;
     object-fit: cover;
-    display: none;
-}
-.active {
-    display: block;
 }
 .container {
     max-width: 1200px;
@@ -26,4 +22,14 @@ button {
     padding: 0.5rem 1rem;
     border-radius: 20px;
     background-color: cornflowerblue;
+}
+.slide {
+    display: none;
+    text-align: center;
+}
+.active {
+    display: block;
+}
+h3, p {
+    margin: 1rem;
 }

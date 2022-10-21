@@ -49,39 +49,51 @@ let thisImg = 0;
 
 //inserisco immagine
 images.forEach((img, i) => {
-        //console.log(img.image, i);
     //inserisco immagine
-    slidesEl.insertAdjacentHTML('beforeend', `<img class="${i == thisImg ? 'image active' : 'image'}" src="./assets/${img.image}" alt="">`)
+    //slidesEl.insertAdjacentHTML('beforeend', `<img class="${i == thisImg ? 'image active' : 'image'}" src="./assets/${img.image}" alt="">`)
+    slidesEl.insertAdjacentHTML('beforeend', `
+    <div class="${i == thisImg ? 'slide active' : 'slide'}">
+        <img src="./assets/${img.image}" alt="" alt="">
+        <h2>${img.title}</h2>
+        <p>${img.text}</p>
+    </div>`)
+   
 
 })
 
 //aggiungo event-listner
 nextEl.addEventListener('click', function () {
     //incremento indice dell'immagine attuale
-    thisImg++
+    if (thisImg == 4) {
+        thisImg = 0
+    } else {
+        thisImg++
+    }
     //seleziono l'immagine attiva
     let activeImg = document.querySelector('.active')
-    //console.log(activeImg);
     //rimuovo la class
     activeImg.classList.remove('active');
     //aggiungo la classe active alla prossima immagine
-    const nextImg = document.querySelectorAll('.image');
+    const nextImg = document.querySelectorAll('.slide');
     nextImg[thisImg].classList.add('active');
-    
+
 })
 
 backEl.addEventListener('click', function () {
     //incremento indice dell'immagine attuale
-    thisImg--
+    if (thisImg == 0) {
+        thisImg = 4
+    } else {
+        thisImg--
+    }
     //seleziono l'immagine attiva
     let activeImg = document.querySelector('.active')
-    //console.log(activeImg);
     //rimuovo la class
     activeImg.classList.remove('active');
     //aggiungo la classe active alla prossima immagine
-    const nextImg = document.querySelectorAll('.image');
+    const nextImg = document.querySelectorAll('.slide');
     nextImg[thisImg].classList.add('active');
-    
+
 })
 
 
