@@ -1,18 +1,10 @@
 /*
-Milestone 0:
-Come nel primo carosello realizzato, focalizziamoci prima sulla creazione del markup statico:
-costruiamo il container e inseriamo l'immagine grande in modo da poter stilare lo slider.
-Milestone 1:
-Ora rimuoviamo i contenuti statici e usiamo l’array di oggetti letterali
-per popolare dinamicamente il carosello.
-
-Al click dell'utente sulle frecce verso sinistra o destra,
-l'immagine attiva diventerà visibile e dovremo aggiungervi titolo e testo.
-Milestone 2:
-Aggiungere il ciclo infinito del carosello.
-Ovvero se la miniatura attiva è la prima e l'utente clicca la freccia verso destra,
-la miniatura che deve attivarsi sarà l'ultima e viceversa per l'ultima miniatura
-se l'utente clicca la freccia verso sinistra.
+BONUS 1 (opzionale):
+Aggiungere le thumbnails (sottoforma di miniatura) ed al click attivare l’immagine corrispondente.
+BONUS 2  (opzionale):
+Aggiungere funzionalità di autoplay: dopo un certo periodo di tempo (3 secondi) l’immagine attiva dovrà cambiare alla successiva.
+BONUS 3  (opzionale):
+Aggiungere bottoni di start/stop e di inversione del meccanismo di autoplay.
 */
 
 const images = [
@@ -42,8 +34,26 @@ const images = [
 //seleziono elemento dom
 const slidesEl = document.querySelector('.slides');
 //seleziono i bottoni
-const backEl = document.querySelector('.back');
-const nextEl = document.querySelector('.next');
+const buttonsEl = document.querySelector('.buttons');
+const btn0El = document.querySelector('.btn_0');
+const btn1El = document.querySelector('.btn_1');
+const btn2El = document.querySelector('.btn_2');
+const btn3El = document.querySelector('.btn_3');
+const btn4El = document.querySelector('.btn_4');
+
+for (let i = 0; i < 5; i++) {
+    buttonsEl.insertAdjacentHTML('beforeend', `
+                <button class="btn_${i}">
+                    <img height="30" src="./assets/${images[i].image}" alt="">
+                </button>
+            `
+    )
+}
+
+
+
+//inserisco immagini nei bottoni
+
 
 let thisImg = 0;
 
@@ -57,18 +67,19 @@ images.forEach((img, i) => {
         <h2>${img.title}</h2>
         <p>${img.text}</p>
     </div>`)
-   
+
 
 })
 
 //aggiungo event-listner
-nextEl.addEventListener('click', function () {
+btn1El.addEventListener('click', function () {
     //incremento indice dell'immagine attuale
-    if (thisImg == 4) {
-        thisImg = 0
-    } else {
-        thisImg++
-    }
+    // if (thisImg == 4) {
+    //     thisImg = 0
+    // } else {
+    //     thisImg++
+    // }
+    thisImg = 1;
     //seleziono l'immagine attiva
     let activeImg = document.querySelector('.active')
     //rimuovo la class
